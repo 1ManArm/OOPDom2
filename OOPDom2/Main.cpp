@@ -101,6 +101,7 @@ protected:
 private:
 	int &wquantity_;
 };
+
 class Engine :virtual public MechanismPart {
 public:
 	Engine() = default;
@@ -111,8 +112,9 @@ public:
 protected:
 	Engine(std::string& engintype) :engintype_(engintype){}
 private:
-	std::string &engintype_;
+	std::string& engintype_;
 };
+
 class Body :virtual public MechanismPart {
 public:
 	Body() = default;
@@ -128,7 +130,8 @@ private:
 
 class Automobile :public Wheels, public Engine, public Body {
 	Automobile() = default;
-	Automobile(const std::string& name, int wquantity, std::string Engine, std::string bodytype):MechanismPart(name), Wheels(wquantity), Engine(engintype), Body(bodytype){}
+	Automobile(const std::string& name, int wquantity, std::string engintype, std::string bodytype) :MechanismPart(name), Wheels(wquantity), Engine(engintype), Body(bodytype) {}
+
 };
 
 int main() {
@@ -140,7 +143,7 @@ int main() {
 	//Robot r{ "Wall-e", 40.1, 2.0 };
 	//r.Item::setName("Wall-e");
 
-
+	Automobile compact{ "Compact", 4, "I4", "Sedan" };
 
 	return 0;
 }
